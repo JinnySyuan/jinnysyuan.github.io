@@ -1,50 +1,50 @@
 ---
-layout: compress
+layout: default
+make-smaller-titles: true
 ---
-<!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
-<head>
-    {% include head.html %}
-</head>
-<body>
-    {% include nav.html %}
-    <!-- Header -->
-    <header class="header flex" role="banner">
-        <div class="container animated fadeIn">
-            <div class="row">
-                    <a href="{{ site.url }}">
-                        <img src="{{ site.logo }}" class="img-circle zoombtn animated rotateIn">
-                    </a>
-                    <h3 class="title">
-                        <a class="zoombtn" href="{{ site.url }}">
-                        	<p style="font-size:1.2rem;font-weight:300">{{ site.title }}</p>
-			            </a>
-                    </h3>
-                    <hr class="hr-line">
-                    <h3 class="title">
-                        <a href="{{ site.url }}">
-                        	<p style="font-size:1rem;font-weight:300">{{ site.bio }}</p>
-			            </a>
-                    </h3>
-                    {% include social-links.html %}
-                  <hr class="hr-line">
-                  <h3 class="title">
-                         <a class="btn zoombtn" href="{{ site.url }}/about">
-                         About
-                         </a>
-                         <a class="btn zoombtn" href="{{ site.url }}/posts">
-                         Posts
-                         </a>
-                         <a class="btn zoombtn" href="{{ site.url }}/projects">
-                         Projects
-                         </a>
-                 </h3>
+
+
+<div class="container-fluid index">
+    <div class="row">
+
+        <div class="main content-panel">
+
+            <div class="gravatar">
+                <img src="{{ site.title_image }}" class="img-circle about-image" height="150" width="150"
+                    alt="{{ site.title }}" />
             </div>
+
+            <h1 class="header author-header" itemprop="headline">{{ site.title }}</h1>
+
+            <div class="author-text">
+                {{ site.title_description }}
+            </div>
+
+            {% include social_links.html %}
         </div>
-    </header>
-    {% include scripts.html %}
-</body>
-</html>
+        <div class="main content-panel">
+
+            <div class="articles">
+
+                <h2>Latest Articles</h2>
+
+                <ul>
+                    {% for post in site.posts limit: site.post_limit %}
+
+                    <li>
+                        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+                        <small class="hidden-xs">{{ post.date | date: "%B %-d, %Y" }}</small>
+                    </li>
+
+                    {% endfor %}
+                    <li>
+                        <small><i><a href="{{ site.baseurl }}/posts/">more...</a></i></small>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
